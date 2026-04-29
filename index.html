@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Приглашение • Империя Знаний</title>
+<meta name="theme-color" content="#0a0612" />
+<meta property="og:title" content="Приглашение • Империя Знаний" />
+<meta property="og:description" content="10 лет компании · 5 лет школе" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Marck+Script&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css" />
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+</head>
+<body>
+
+<!-- ШЕЙДЕРНЫЙ ФОН (Three.js) -->
+<div id="bgFx" class="bg-fx" aria-hidden="true"></div>
+
+<!-- SVG-фильтры для бархата и свечения -->
+<svg class="defs-only" aria-hidden="true" width="0" height="0">
+  <defs>
+    <filter id="velvet" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3"/>
+      <feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .35 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+    <filter id="goldGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff5c2"/>
+      <stop offset="40%" stop-color="#ffd877"/>
+      <stop offset="70%" stop-color="#c08a2c"/>
+      <stop offset="100%" stop-color="#7a571c"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<!-- ЗАНАВЕС -->
+<div class="curtain" id="curtain" aria-hidden="true">
+  <div class="curtain__pelmet">
+    <div class="curtain__swag"></div>
+    <div class="curtain__tassels">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="curtain__half curtain__half--left">
+    <div class="curtain__fabric"></div>
+    <div class="curtain__velvet"></div>
+    <div class="curtain__fringe"></div>
+    <div class="curtain__tieback"></div>
+  </div>
+  <div class="curtain__half curtain__half--right">
+    <div class="curtain__fabric"></div>
+    <div class="curtain__velvet"></div>
+    <div class="curtain__fringe"></div>
+    <div class="curtain__tieback"></div>
+  </div>
+  <div class="stage-light"></div>
+  <div class="stage-glow"></div>
+</div>
+
+<!-- ЧАСТИЦЫ ЗОЛОТОЙ ПЫЛИ -->
+<canvas id="particles" class="particles"></canvas>
+
+<!-- ОСНОВНАЯ СЦЕНА -->
+<main class="stage" id="stage">
+
+  <section class="hero reveal">
+    <div class="emblem">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#fff5c2"/>
+            <stop offset="45%" stop-color="#e8c46b"/>
+            <stop offset="100%" stop-color="#7a571c"/>
+          </linearGradient>
+        </defs>
+        <circle cx="60" cy="60" r="54" fill="none" stroke="url(#gold)" stroke-width="1.5"/>
+        <circle cx="60" cy="60" r="42" fill="none" stroke="url(#gold)" stroke-width="0.8" opacity=".6"/>
+        <text x="60" y="72" text-anchor="middle" font-family="Cormorant Garamond" font-size="38" font-weight="600" fill="url(#gold)">ИЗ</text>
+      </svg>
+    </div>
+
+    <p class="eyebrow">Имеем честь пригласить Вас на торжественный вечер</p>
+
+    <h1 class="title" data-text="10 лет">
+      <span class="title__big" aria-hidden="true">
+        <span class="ch">1</span><span class="ch">0</span>
+      </span>
+      <span class="title__small">лет</span>
+      <span class="sr-only">10 лет</span>
+    </h1>
+
+    <p class="subtitle">
+      компании <em>«Империя Знаний»</em>
+    </p>
+
+    <div class="hero-divider">
+      <span></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 14 10 22 12 14 14 12 22 10 14 2 12 10 10z" fill="url(#gold)"/></svg><span></span>
+    </div>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Дата</span>
+        <span class="meta-value" data-key="date">16 мая</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Время</span>
+        <span class="meta-value" data-key="time">[ВРЕМЯ]</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Место</span>
+        <span class="meta-value" data-key="place">[ТЕАТР ОПЕРЫ И БАЛЕТА]</span>
+      </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <span>продолжить</span>
+      <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" stroke="currentColor" fill="none" stroke-width="1.5"/></svg>
+    </div>
+  </section>
+
+  <!-- ИМЕННОЕ ОБРАЩЕНИЕ -->
+  <section class="addressee reveal" id="addressee">
+    <p class="addressee__pre">Дорогой(ая)</p>
+    <h2 class="addressee__name" id="guestName">[ИМЯ ГОСТЯ]</h2>
+    <p class="addressee__after">[ЗДЕСЬ КОРОТКОЕ ЛИЧНОЕ ОБРАЩЕНИЕ — ЗАМЕНИТЕ]</p>
+  </section>
+
+  <!-- ПРОГРАММА / ОПИСАНИЕ -->
+  <section class="programme reveal">
+    <h3 class="programme__title">Программа вечера</h3>
+    <ol class="programme__list">
+      <li><span class="dot"></span>[ПУНКТ 1 — например, торжественное открытие]</li>
+      <li><span class="dot"></span>[ПУНКТ 2 — представление о школе]</li>
+      <li><span class="dot"></span>[ПУНКТ 3 — концертная часть]</li>
+      <li><span class="dot"></span>[ПУНКТ 4 — фуршет]</li>
+    </ol>
+    <p class="programme__note">Дресс-код: <em data-key="dress">[ДРЕСС-КОД]</em></p>
+  </section>
+
+  <!-- RSVP -->
+  <section class="rsvp reveal" id="rsvp">
+    <h3 class="rsvp__title">Подтвердите своё присутствие</h3>
+    <p class="rsvp__sub">Просим ответить до <span data-key="rsvpBy">[ДАТА]</span></p>
+
+    <div class="rsvp__buttons" id="rsvpButtons">
+      <button class="btn btn--yes" data-answer="yes" type="button">
+        <span class="btn__shine"></span>
+        <span class="btn__label">Буду</span>
+        <svg viewBox="0 0 24 24" class="btn__icon"><path d="M5 12l5 5L20 7" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="btn btn--no" data-answer="no" type="button">
+        <span class="btn__label">К сожалению, не смогу</span>
+      </button>
+    </div>
+
+    <div class="wish" id="wishBlock" hidden>
+      <label for="wish">Ваше пожелание (по желанию)</label>
+      <textarea id="wish" maxlength="500" rows="3" placeholder="Несколько тёплых слов..."></textarea>
+      <button type="button" class="btn btn--send" id="sendBtn">
+        <span class="btn__label">Отправить ответ</span>
+      </button>
+    </div>
+
+    <div class="rsvp__status" id="rsvpStatus" role="status" aria-live="polite"></div>
+  </section>
+
+  <footer class="foot reveal">
+    <p>С любовью, команда <strong>«Империя Знаний»</strong></p>
+    <p class="foot__contact">По вопросам: <a href="tel:[ТЕЛЕФОН]" data-key="phone">[ТЕЛЕФОН]</a></p>
+  </footer>
+
+</main>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
+<button class="music-toggle" id="musicToggle" aria-label="Музыка вкл/выкл" type="button" title="Музыка">
+  <svg class="ico-on" viewBox="0 0 24 24"><path d="M9 18V6l12-2v12" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="18" r="3" fill="currentColor"/><circle cx="18" cy="16" r="3" fill="currentColor"/></svg>
+  <svg class="ico-off" viewBox="0 0 24 24" style="display:none"><path d="M9 18V6l12-2v12" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="18" r="3" fill="currentColor"/><circle cx="18" cy="16" r="3" fill="currentColor"/><line x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</button>
+<div class="sound-hint" id="soundHint" aria-hidden="true">
+  <svg viewBox="0 0 24 24"><path d="M9 18V6l12-2v12" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="18" r="3" fill="currentColor"/><circle cx="18" cy="16" r="3" fill="currentColor"/></svg>
+  <span>Коснитесь экрана, чтобы включить музыку</span>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
