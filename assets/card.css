@@ -116,25 +116,25 @@ canvas.bg-fx.is-on{opacity:1}
 }
 .seal:hover{transform:translate(-50%,0) scale(1.06)}
 
-/* === Анимация "тапа" на печать === */
-.seal__finger{
-  position:absolute;
-  font-size:54px;line-height:1;
-  left:50%;top:100%;
-  margin-left:-27px;
-  margin-top:6px;
-  filter:drop-shadow(0 4px 10px rgba(0,0,0,.7))
-        drop-shadow(0 0 8px rgba(255,235,200,.4));
+/* === Анимация "тапа" на печать (палец поверх всего конверта) === */
+.env__finger{
+  position:absolute;z-index:20;
+  font-size:90px;line-height:1;
+  left:50%;bottom:6%;
+  margin-left:-45px;margin-bottom:-90px;
   pointer-events:none;user-select:none;
+  opacity:.55;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,.7))
+        drop-shadow(0 0 16px rgba(255,235,200,.45));
   animation:fingerTap 2s cubic-bezier(.4,0,.3,1) infinite;
 }
 @keyframes fingerTap{
-  0%   {transform:translateY(0) scale(1)}
-  20%  {transform:translateY(0) scale(1)}
-  45%  {transform:translateY(-26px) scale(.88)}
-  55%  {transform:translateY(-26px) scale(.88)}
-  75%  {transform:translateY(0) scale(1)}
-  100% {transform:translateY(0) scale(1)}
+  0%   {transform:translateY(0) scale(1);opacity:.55}
+  20%  {transform:translateY(0) scale(1);opacity:.55}
+  45%  {transform:translateY(-46px) scale(.9);opacity:.85}
+  55%  {transform:translateY(-46px) scale(.9);opacity:.85}
+  75%  {transform:translateY(0) scale(1);opacity:.55}
+  100% {transform:translateY(0) scale(1);opacity:.55}
 }
 
 .seal__ripple{
@@ -152,11 +152,16 @@ canvas.bg-fx.is-on{opacity:1}
 }
 
 /* при открытии — палец и кольца исчезают */
-.env.is-open .seal__finger,
-.env.is-open .seal__ripple{opacity:0;animation:none;transition:opacity .25s}
+.env.is-open .env__finger,
+.env.is-open .seal__ripple{opacity:0;animation:none;transition:opacity .35s}
 
 @media (max-width:560px){
-  .seal__finger{font-size:42px;margin-left:-21px}
+  .env__finger{font-size:70px;margin-left:-35px;margin-bottom:-70px}
+  @keyframes fingerTap{
+    0%,20%   {transform:translateY(0) scale(1);opacity:.55}
+    45%,55%  {transform:translateY(-36px) scale(.9);opacity:.85}
+    75%,100% {transform:translateY(0) scale(1);opacity:.55}
+  }
 }
 @keyframes sealPulse{
   0%,100%{box-shadow:0 6px 14px rgba(0,0,0,.55),inset 0 -6px 12px rgba(0,0,0,.4),inset 0 4px 6px rgba(255,200,180,.4),0 0 0 0 rgba(196,56,44,.6)}
