@@ -231,6 +231,10 @@ canvas.bg-fx.is-on{opacity:1}
 
 .inside__lead{font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.55;color:var(--ink-warm);margin-bottom:10px}
 .inside__lead b{font-weight:600;color:var(--gold-4)}
+.lead-num{font-size:1.8em;font-weight:700;line-height:.9;
+  background:linear-gradient(180deg,#a76f1f,#7a571c 60%,#4d3409);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:-.02em;padding:0 .04em}
 .inside__lead--soft{font-style:italic;font-size:15px;color:rgba(58,33,10,.85);margin-bottom:14px}
 
 .inside__note{
