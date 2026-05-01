@@ -129,12 +129,9 @@ canvas.bg-fx.is-on{opacity:1}
   animation:fingerTap 2s cubic-bezier(.4,0,.3,1) infinite;
 }
 @keyframes fingerTap{
-  0%   {transform:translateY(0) scale(1);opacity:.55}
-  20%  {transform:translateY(0) scale(1);opacity:.55}
-  45%  {transform:translateY(-46px) scale(.9);opacity:.85}
-  55%  {transform:translateY(-46px) scale(.9);opacity:.85}
-  75%  {transform:translateY(0) scale(1);opacity:.55}
-  100% {transform:translateY(0) scale(1);opacity:.55}
+  0%,20%   {transform:translateY(0) scale(1)}
+  45%,55%  {transform:translateY(-46px) scale(.9)}
+  75%,100% {transform:translateY(0) scale(1)}
 }
 
 .seal__ripple{
