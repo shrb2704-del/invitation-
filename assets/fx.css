@@ -3,6 +3,7 @@
   position:fixed;inset:0;z-index:3;pointer-events:none;
   display:block;width:100%;height:100%;
   mix-blend-mode:screen;
+  transition:opacity .5s ease;
 }
 
 /* === BUTTERFLIES LAYER === */
@@ -10,7 +11,13 @@
   position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden;
   perspective:800px;
   perspective-origin:50% 50%;
+  transition:opacity .5s ease;
 }
+
+/* Когда открытка раскрыта на внутренней стороне — скрываем,
+   чтобы бабочки и салют не закрывали текст приглашения */
+body.is-inside .butterflies{opacity:0}
+body.is-inside .fireworks-canvas{opacity:.18}
 .butterfly{
   position:absolute;left:0;top:0;
   width:120px;height:100px;

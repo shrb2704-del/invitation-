@@ -68,10 +68,12 @@
   openBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     card.classList.add('is-flipped');
+    document.body.classList.add('is-inside');
   });
   backBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     card.classList.remove('is-flipped');
+    document.body.classList.remove('is-inside');
   });
 
   // ===== RSVP =====
