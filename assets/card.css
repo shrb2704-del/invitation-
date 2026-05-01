@@ -121,7 +121,7 @@ canvas.bg-fx.is-on{opacity:1}
   position:absolute;z-index:20;
   font-size:90px;line-height:1;
   left:50%;bottom:6%;
-  margin-left:-45px;margin-bottom:-90px;
+  margin-left:-45px;margin-bottom:-30px;
   pointer-events:none;user-select:none;
   opacity:.55;
   filter:drop-shadow(0 6px 14px rgba(0,0,0,.7))
@@ -156,7 +156,7 @@ canvas.bg-fx.is-on{opacity:1}
 .env.is-open .seal__ripple{opacity:0;animation:none;transition:opacity .35s}
 
 @media (max-width:560px){
-  .env__finger{font-size:70px;margin-left:-35px;margin-bottom:-70px}
+  .env__finger{font-size:70px;margin-left:-35px;margin-bottom:-22px}
   @keyframes fingerTap{
     0%,20%   {transform:translateY(0) scale(1);opacity:.55}
     45%,55%  {transform:translateY(-36px) scale(.9);opacity:.85}
