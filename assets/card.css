@@ -87,12 +87,12 @@ canvas.bg-fx.is-on{opacity:1}
 }
 .seal::before{content:'';position:absolute;inset:6px;border-radius:50%;border:1px dashed rgba(255,235,200,.35)}
 .seal__logo{
-  width:62%;height:62%;
+  width:70%;height:70%;
   background-color:rgba(255,240,215,.95);
-  -webkit-mask:url(logo.PNG) center/contain no-repeat;
-  mask:url(logo.PNG) center/contain no-repeat;
+  -webkit-mask:url(seal-logo.png) center/contain no-repeat;
+  mask:url(seal-logo.png) center/contain no-repeat;
   filter:drop-shadow(0 1px 0 rgba(0,0,0,.35));
-  opacity:.92;
+  opacity:.95;
   pointer-events:none;
 }
 .seal:hover{transform:translate(-50%,0) scale(1.06)}
