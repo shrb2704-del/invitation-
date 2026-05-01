@@ -76,10 +76,14 @@
 
   // ===== RSVP =====
   const rsvpBtns = document.getElementById('rsvpBtns');
+  const nameInput = document.getElementById('nameInput');
   const wish = document.getElementById('wish');
   const send = document.getElementById('send');
   const status = document.getElementById('status');
   let chosen = null;
+
+  // Если имя пришло из URL/guests.json — поле имени не нужно
+  const needsName = !guestName;
 
   rsvpBtns.addEventListener('click', (e) => {
     const b = e.target.closest('.b[data-answer]');
@@ -87,19 +91,33 @@
     chosen = b.dataset.answer;
     rsvpBtns.querySelectorAll('.b').forEach(x => x.classList.remove('is-active'));
     b.classList.add('is-active');
+    if (needsName) nameInput.hidden = false;
     wish.hidden = false;
     send.hidden = false;
-    setTimeout(() => wish.focus({ preventScroll: false }), 50);
+    setTimeout(() => (needsName ? nameInput : wish).focus({ preventScroll: false }), 50);
   });
+
+  nameInput.addEventListener('input', () => nameInput.classList.remove('is-error'));
 
   send.addEventListener('click', async () => {
     if (!chosen) return;
+    let finalName = guestName;
+    if (needsName) {
+      finalName = (nameInput.value || '').trim();
+      if (finalName.length < 2) {
+        nameInput.classList.add('is-error');
+        nameInput.focus();
+        status.className = 'rsvp__status error';
+        status.textContent = 'Пожалуйста, укажите Ваше имя.';
+        return;
+      }
+    }
     send.disabled = true;
     status.className = 'rsvp__status';
     status.textContent = 'Отправляем…';
     const payload = {
       answer: chosen,
-      name: guestName || 'Гость без имени',
+      name: finalName || 'Гость без имени',
       guestId: guestId || null,
       wish: (wish.value || '').trim().slice(0, 500),
       ts: new Date().toISOString(),
@@ -120,6 +138,7 @@
       status.classList.add('success');
       status.textContent = chosen === 'yes' ? 'Спасибо! Ждём вас ✨' : 'Спасибо за ответ.';
       wish.disabled = true;
+      if (needsName) nameInput.disabled = true;
       if (chosen === 'yes' && window.__fxBurst) {
         window.__fxBurst(innerWidth * 0.5, innerHeight * 0.4, 8);
       }

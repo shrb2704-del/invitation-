@@ -266,11 +266,13 @@ canvas.bg-fx.is-on{opacity:1}
 .b.is-active{outline:2px solid var(--gold-3);outline-offset:2px}
 .b[disabled]{opacity:.5;cursor:not-allowed;transform:none}
 
-#wish{width:100%;margin-top:10px;padding:10px 12px;
+#wish, .name-input{width:100%;margin-top:10px;padding:10px 12px;
   border:1px solid rgba(122,87,28,.35);border-radius:10px;
   font-family:inherit;font-size:14px;
   background:rgba(255,255,255,.55);color:var(--ink-warm);resize:none}
-#wish:focus{outline:none;border-color:var(--gold-3);box-shadow:0 0 0 3px rgba(192,138,44,.15)}
+#wish:focus, .name-input:focus{outline:none;border-color:var(--gold-3);box-shadow:0 0 0 3px rgba(192,138,44,.15)}
+.name-input{font-weight:600}
+.name-input.is-error{border-color:#9c2a1c;box-shadow:0 0 0 3px rgba(156,42,28,.18)}
 .b--send{margin-top:8px;flex:none;width:100%}
 .rsvp__status{margin-top:10px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;min-height:18px}
 .rsvp__status.success{color:#3b6028}
