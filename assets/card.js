@@ -130,7 +130,7 @@
       if (isPreview) {
         await new Promise(r => setTimeout(r, 600));
       } else {
-        const res = await fetch('/.netlify/functions/rsvp', {
+        const res = await fetch('/api/rsvp', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
