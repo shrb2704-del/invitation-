@@ -7,28 +7,31 @@
   const openBtn = document.getElementById('openCard');
   const backBtn = document.getElementById('backBtn');
   const hint = document.getElementById('hint');
-  const nameEl = document.getElementById('guestName');
+  const greetingEl = document.getElementById('greetingLine');
 
-  // ===== guest name =====
+  // ===== guest =====
   const params = new URLSearchParams(location.search);
   const guestId = params.get('n');
   const explicit = params.get('name');
   let guestName = null;
+  let guestGreeting = null;
   if (explicit) guestName = decodeURIComponent(explicit);
   else if (guestId) {
     try {
       const r = await fetch('guests.json', { cache: 'no-store' });
       if (r.ok) {
         const data = await r.json();
-        if (data && data[guestId]) guestName = data[guestId];
+        const g = data && data[guestId];
+        if (g) {
+          if (typeof g === 'string') { guestName = g; }
+          else { guestName = g.name; guestGreeting = g.g; }
+        }
       }
     } catch (_) {}
   }
-  if (guestName) {
-    nameEl.textContent = guestName;
-  } else {
-    // нет имени — прячем только строку с именем, но «Дорогие родители!» оставляем
-    nameEl.style.display = 'none';
+  if (guestName && greetingEl) {
+    const prefix = guestGreeting ? `${guestGreeting} ` : '';
+    greetingEl.textContent = `${prefix}${guestName}!`;
   }
 
   // ===== ХОРЕОГРАФИЯ =====
