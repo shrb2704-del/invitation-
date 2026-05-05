@@ -79,17 +79,20 @@
     document.body.classList.remove('is-inside');
   });
 
-  // ===== Scroll-hint: hide once RSVP is visible =====
+  // ===== Scroll-hint: hide once RSVP is visible OR after 4s =====
   const scrollHint = document.getElementById('scrollHint');
   const rsvpEl = document.querySelector('.rsvp');
-  if (scrollHint && rsvpEl && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        scrollHint.classList.add('is-hidden');
-        io.disconnect();
-      }
-    }, { threshold: 0.25 });
-    io.observe(rsvpEl);
+  if (scrollHint) {
+    const hideHint = () => scrollHint.classList.add('is-hidden');
+    if (rsvpEl && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) { hideHint(); io.disconnect(); }
+      }, { threshold: 0.25 });
+      io.observe(rsvpEl);
+    }
+    // also auto-hide 4s after the user flips to inside
+    const autoHide = () => setTimeout(hideHint, 4000);
+    document.getElementById('openCard')?.addEventListener('click', autoHide, { once: true });
   }
 
   // ===== RSVP =====
