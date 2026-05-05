@@ -79,6 +79,19 @@
     document.body.classList.remove('is-inside');
   });
 
+  // ===== Scroll-hint: hide once RSVP is visible =====
+  const scrollHint = document.getElementById('scrollHint');
+  const rsvpEl = document.querySelector('.rsvp');
+  if (scrollHint && rsvpEl && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        scrollHint.classList.add('is-hidden');
+        io.disconnect();
+      }
+    }, { threshold: 0.25 });
+    io.observe(rsvpEl);
+  }
+
   // ===== RSVP =====
   const rsvpBtns = document.getElementById('rsvpBtns');
   const nameInput = document.getElementById('nameInput');

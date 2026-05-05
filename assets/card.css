@@ -268,6 +268,20 @@ canvas.bg-fx.is-on{opacity:1}
 
 .inside__meta--venue b{font-size:14px;line-height:1.3}
 
+.scroll-hint{display:flex;flex-direction:column;align-items:center;gap:2px;
+  margin:12px 0 4px;color:var(--gold-4);
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;
+  letter-spacing:.04em;
+  animation:scrollHintBounce 1.6s ease-in-out infinite;
+  transition:opacity .45s ease}
+.scroll-hint svg{width:22px;height:22px;display:block}
+.scroll-hint.is-hidden{opacity:0;pointer-events:none}
+@keyframes scrollHintBounce{
+  0%,100%{transform:translateY(0)}
+  50%    {transform:translateY(6px)}
+}
+@media (min-width:760px){.scroll-hint{display:none}}
+
 .cover__btn{margin-top:8px;cursor:pointer;border:none;
   font-family:inherit;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
   padding:14px 28px;border-radius:999px;
