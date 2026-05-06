@@ -8,6 +8,7 @@
   const backBtn = document.getElementById('backBtn');
   const hint = document.getElementById('hint');
   const greetingEl = document.getElementById('greetingLine');
+  const roleEl = document.getElementById('roleLine');
 
   // ===== guest =====
   const params = new URLSearchParams(location.search);
@@ -15,6 +16,7 @@
   const explicit = params.get('name');
   let guestName = null;
   let guestGreeting = null;
+  let guestRole = null;
   if (explicit) guestName = decodeURIComponent(explicit);
   else if (guestId) {
     try {
@@ -24,7 +26,7 @@
         const g = data && data[guestId];
         if (g) {
           if (typeof g === 'string') { guestName = g; }
-          else { guestName = g.name; guestGreeting = g.g; }
+          else { guestName = g.name; guestGreeting = g.g; guestRole = g.role || null; }
         }
       }
     } catch (_) {}
@@ -32,6 +34,10 @@
   if (guestName && greetingEl) {
     const prefix = guestGreeting ? `${guestGreeting} ` : '';
     greetingEl.textContent = `${prefix}${guestName}!`;
+  }
+  if (guestRole && roleEl) {
+    roleEl.textContent = guestRole;
+    roleEl.hidden = false;
   }
 
   // ===== ХОРЕОГРАФИЯ =====
