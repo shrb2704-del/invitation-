@@ -1,53 +1,6 @@
 (async () => {
   'use strict';
 
-  // ===== i18n dictionary (Chinese) =====
-  const I18N_ZH = {
-    env_cta:           '请点击印章&nbsp;<span class="env__cta-arrow">↑</span>',
-    cover_eyebrow:     '诚邀您出席',
-    cover_years:       '周年',
-    cover_sub:         '<em>《知识帝国》</em>公司',
-    cover_day:         '5月16日',
-    cover_month:       '',
-    cover_year:        '2026',
-    cover_btn:         '打开请柬',
-    greeting_default:  '尊敬的来宾！',
-    inside_lead:       '诚邀您出席<b>《知识帝国》公司成立<span class="lead-num">10</span>周年庆祝活动</b>。',
-    inside_lead_soft:  '期待您与我们共度这特别的一天。',
-    meta_date:         '日期',
-    meta_date_value:   '2026年5月16日',
-    meta_reg:          '签到',
-    meta_start:        '开始',
-    meta_place:        '地点',
-    meta_place_value:  '萨德里丁·艾尼<br>歌剧芭蕾舞剧院',
-    inside_note:       '✨ 请记得带上<b>您的好心情！</b>',
-    scroll_hint:       '请于下方确认',
-    rsvp_title:        '请确认出席',
-    rsvp_yes:          '出席',
-    rsvp_no:           '无法出席',
-    rsvp_send:         '提交',
-    name_placeholder:  '您的姓名',
-    wish_placeholder:  '祝福语（可选）',
-    back:              '首页',
-    hint:              '👆 请点击红色印章打开请柬',
-  };
-
-  function applyI18n(lang) {
-    if (lang !== 'zh') return;
-    document.documentElement.lang = 'zh';
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      const txt = I18N_ZH[key];
-      if (typeof txt !== 'string') return;
-      const attr = el.getAttribute('data-i18n-attr');
-      if (attr) el.setAttribute(attr, txt);
-      else el.innerHTML = txt;
-    });
-    // hide cover__month if it became empty (Chinese uses combined "5月16日" in cover_day)
-    const monthEl = document.querySelector('[data-i18n="cover_month"]');
-    if (monthEl && !monthEl.textContent.trim()) monthEl.style.display = 'none';
-  }
-
   const env = document.getElementById('env');
   const seal = document.getElementById('seal');
   const card = document.getElementById('card');
@@ -55,7 +8,6 @@
   const backBtn = document.getElementById('backBtn');
   const hint = document.getElementById('hint');
   const greetingEl = document.getElementById('greetingLine');
-  const roleEl = document.getElementById('roleLine');
 
   // ===== guest =====
   const params = new URLSearchParams(location.search);
@@ -63,8 +15,6 @@
   const explicit = params.get('name');
   let guestName = null;
   let guestGreeting = null;
-  let guestLang = null;
-  let guestRole = null;
   if (explicit) guestName = decodeURIComponent(explicit);
   else if (guestId) {
     try {
@@ -74,31 +24,14 @@
         const g = data && data[guestId];
         if (g) {
           if (typeof g === 'string') { guestName = g; }
-          else {
-            guestName = g.name;
-            guestGreeting = g.g;
-            guestLang = g.lang || null;
-            guestRole = g.role || null;
-          }
+          else { guestName = g.name; guestGreeting = g.g; }
         }
       }
     } catch (_) {}
   }
-
-  // apply Chinese translations BEFORE setting greeting so we don't overwrite our work
-  if (guestLang === 'zh') applyI18n('zh');
-
   if (guestName && greetingEl) {
-    if (guestLang === 'zh') {
-      greetingEl.textContent = `尊敬的 ${guestName}：`;
-    } else {
-      const prefix = guestGreeting ? `${guestGreeting} ` : '';
-      greetingEl.textContent = `${prefix}${guestName}!`;
-    }
-  }
-  if (guestRole && roleEl) {
-    roleEl.textContent = guestRole;
-    roleEl.hidden = false;
+    const prefix = guestGreeting ? `${guestGreeting} ` : '';
+    greetingEl.textContent = `${prefix}${guestName}!`;
   }
 
   // ===== ХОРЕОГРАФИЯ =====
