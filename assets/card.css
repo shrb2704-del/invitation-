@@ -324,6 +324,9 @@ html[lang="zh"] .inside__role{font-family:'PingFang SC','Microsoft YaHei','Noto 
 html[lang="zh"] .inside__greeting{font-family:'Cormorant Garamond','PingFang SC','Microsoft YaHei','Noto Sans SC',sans-serif;font-style:normal;font-size:20px;line-height:1.4}
 html[lang="zh"] .cover__day{font-size:34px}
 html[lang="zh"] .cover__month{display:none}
+html[lang="zh"] .cover__small{font-size:.24em;font-style:normal;font-weight:600;
+  font-family:'PingFang SC','Microsoft YaHei','Noto Sans SC','Hiragino Sans GB','Heiti SC',sans-serif;
+  align-self:center;letter-spacing:.04em}
 .inside__name{font-family:'Marck Script',cursive;font-size:clamp(34px,8vw,50px);line-height:1.1;
   margin-top:2px;
   background:linear-gradient(180deg,#a76f1f,#7a571c 60%,#4d3409);
