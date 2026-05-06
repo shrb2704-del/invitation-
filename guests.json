@@ -16,5 +16,10 @@
   "mukhammadtoir": { "name": "Мухаммадтоир Саид",      "g": "Уважаемый" },
   "karibabaev":    { "name": "Хуршед Карибабаев",      "g": "Уважаемый" },
   "sadullozoda":   { "name": "Садуллозода Алишер",     "g": "Уважаемый" },
-  "parvina":       { "name": "Парвина Толибджон",      "g": "Уважаемая" }
+  "parvina":       { "name": "Парвина Толибджон",      "g": "Уважаемая" },
+
+  "sun-jing":      { "name": "SUN JING",          "lang": "zh", "role": "中方院长" },
+  "imomzoda-zh":   { "name": "IMOMZODA MAHINA",   "lang": "zh", "role": "塔方院长" },
+  "wang":          { "name": "WANG HUIJUAN",      "lang": "zh" },
+  "sun-rongwei":   { "name": "SUN RONGWEI",       "lang": "zh" }
 }

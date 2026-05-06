@@ -41,7 +41,7 @@
   <div class="env" id="env" role="button" tabindex="0" aria-label="Открыть приглашение">
     <div class="env__back"></div>
     <div class="env__pocket">
-      <span class="env__cta">Нажмите на печать&nbsp;<span class="env__cta-arrow">↑</span></span>
+      <span class="env__cta" data-i18n="env_cta">Нажмите на печать&nbsp;<span class="env__cta-arrow">↑</span></span>
     </div>
     <div class="env__flap" id="flap">
       <div class="seal" id="seal" aria-hidden="true">
@@ -64,9 +64,9 @@
           <svg viewBox="0 0 240 24" preserveAspectRatio="none"><path d="M0 12 H90 M150 12 H240 M120 2 L128 12 120 22 112 12 Z" fill="currentColor" stroke="currentColor" stroke-width=".6"/></svg>
         </div>
 
-        <p class="cover__eyebrow">Приглашаем Вас</p>
-        <h1 class="cover__title">10<span class="cover__small">лет</span></h1>
-        <p class="cover__sub">компании <em>«Империя&nbsp;Знаний»</em></p>
+        <p class="cover__eyebrow" data-i18n="cover_eyebrow">Приглашаем Вас</p>
+        <h1 class="cover__title">10<span class="cover__small" data-i18n="cover_years">лет</span></h1>
+        <p class="cover__sub" data-i18n="cover_sub">компании <em>«Империя&nbsp;Знаний»</em></p>
 
         <div class="cover__divider">
           <span></span>
@@ -75,10 +75,10 @@
         </div>
 
         <div class="cover__date">
-          <span class="cover__day">16</span>
+          <span class="cover__day" data-i18n="cover_day">16</span>
           <div>
-            <span class="cover__month">мая</span>
-            <span class="cover__year">2026</span>
+            <span class="cover__month" data-i18n="cover_month">мая</span>
+            <span class="cover__year" data-i18n="cover_year">2026</span>
           </div>
         </div>
 
@@ -87,7 +87,7 @@
         </div>
 
         <button class="cover__btn" id="openCard" type="button">
-          <span>Открыть приглашение</span>
+          <span data-i18n="cover_btn">Открыть приглашение</span>
           <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
@@ -97,49 +97,50 @@
     <div class="card__face card__inside">
       <img src="assets/logo.PNG" alt="Империя Знаний" class="inside__logo" />
       <div class="inside__head">
-        <p class="inside__greeting" id="greetingLine">Дорогие гости!</p>
+        <p class="inside__role" id="roleLine" hidden></p>
+        <p class="inside__greeting" id="greetingLine" data-i18n="greeting_default">Дорогие гости!</p>
       </div>
 
-      <p class="inside__lead">Приглашаем Вас на праздничное мероприятие, посвящённое <b><span class="lead-num">10</span>-летию компании «Империя&nbsp;Знаний»</b>.</p>
-      <p class="inside__lead inside__lead--soft">Будем рады, если Вы разделите этот особенный день с&nbsp;нами.</p>
+      <p class="inside__lead" data-i18n="inside_lead">Приглашаем Вас на праздничное мероприятие, посвящённое <b><span class="lead-num">10</span>-летию компании «Империя&nbsp;Знаний»</b>.</p>
+      <p class="inside__lead inside__lead--soft" data-i18n="inside_lead_soft">Будем рады, если Вы разделите этот особенный день с&nbsp;нами.</p>
 
       <ul class="inside__meta">
-        <li><span>Дата</span><b>16 мая 2026</b></li>
-        <li><span>Регистрация</span><b>09:30</b></li>
-        <li><span>Начало</span><b>10:00</b></li>
-        <li class="inside__meta--venue"><span>Место</span><b>Театр оперы и&nbsp;балета<br>имени Садриддина&nbsp;Айни</b></li>
+        <li><span data-i18n="meta_date">Дата</span><b data-i18n="meta_date_value">16 мая 2026</b></li>
+        <li><span data-i18n="meta_reg">Регистрация</span><b>09:30</b></li>
+        <li><span data-i18n="meta_start">Начало</span><b>10:00</b></li>
+        <li class="inside__meta--venue"><span data-i18n="meta_place">Место</span><b data-i18n="meta_place_value">Театр оперы и&nbsp;балета<br>имени Садриддина&nbsp;Айни</b></li>
       </ul>
 
-      <p class="inside__note">✨ Обязательно возьмите с&nbsp;собой <b>хорошее настроение!</b></p>
+      <p class="inside__note" data-i18n="inside_note">✨ Обязательно возьмите с&nbsp;собой <b>хорошее настроение!</b></p>
 
       <div class="scroll-hint" id="scrollHint" aria-hidden="true">
-        <span>Подтвердите ниже</span>
+        <span data-i18n="scroll_hint">Подтвердите ниже</span>
         <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
 
       <div class="rsvp">
-        <p class="rsvp__title">Подтвердите присутствие</p>
+        <p class="rsvp__title" data-i18n="rsvp_title">Подтвердите присутствие</p>
         <div class="rsvp__btns" id="rsvpBtns">
           <button class="b b--yes" type="button" data-answer="yes">
             <svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Буду
+            <span data-i18n="rsvp_yes">Буду</span>
           </button>
-          <button class="b b--no" type="button" data-answer="no">Не смогу</button>
+          <button class="b b--no" type="button" data-answer="no" data-i18n="rsvp_no">Не смогу</button>
         </div>
-        <input type="text" id="nameInput" class="name-input" placeholder="Ваше имя и фамилия" maxlength="80" hidden autocomplete="name">
-        <textarea id="wish" rows="2" placeholder="Пожелание (по желанию)" maxlength="500" hidden></textarea>
-        <button class="b b--send" id="send" type="button" hidden>Отправить ответ</button>
+        <input type="text" id="nameInput" class="name-input" placeholder="Ваше имя и фамилия" data-i18n-attr="placeholder" data-i18n="name_placeholder" maxlength="80" hidden autocomplete="name">
+        <textarea id="wish" rows="2" placeholder="Пожелание (по желанию)" data-i18n-attr="placeholder" data-i18n="wish_placeholder" maxlength="500" hidden></textarea>
+        <button class="b b--send" id="send" type="button" hidden data-i18n="rsvp_send">Отправить ответ</button>
         <p class="rsvp__status" id="status" role="status" aria-live="polite"></p>
       </div>
 
       <button class="back-btn" id="backBtn" type="button" aria-label="Закрыть">
         <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-        <span>главная</span>
+        <span data-i18n="back">главная</span>
       </button>
     </div>
   </div>
 
-  <p class="hint" id="hint">👆 Нажмите на красную печать, чтобы открыть приглашение</p>
+  <p class="hint" id="hint" data-i18n="hint">👆 Нажмите на красную печать, чтобы открыть приглашение</p>
 </main>
 
 <audio id="bgMusic" loop preload="none">
