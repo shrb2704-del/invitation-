@@ -6,6 +6,16 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
+  // === Origin/Referer check: only accept POSTs from our own site ===
+  const ALLOWED_HOST = 'imperiya-invitation.netlify.app';
+  const h = event.headers || {};
+  const src = h.origin || h.Origin || h.referer || h.Referer || '';
+  let srcHost = '';
+  try { srcHost = new URL(src).hostname; } catch (_) {}
+  if (!srcHost.endsWith(ALLOWED_HOST)) {
+    return { statusCode: 403, body: 'Forbidden' };
+  }
+
   let payload;
   try { payload = JSON.parse(event.body || '{}'); }
   catch { return { statusCode: 400, body: 'Bad JSON' }; }
