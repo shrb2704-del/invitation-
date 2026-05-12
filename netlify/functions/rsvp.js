@@ -8,11 +8,11 @@ exports.handler = async (event) => {
 
   // === Origin/Referer check: only accept POSTs from our own site ===
   const ALLOWED_HOST = 'imperiya-invitation.netlify.app';
-  const h = event.headers || {};
-  const src = h.origin || h.Origin || h.referer || h.Referer || '';
-  let srcHost = '';
-  try { srcHost = new URL(src).hostname; } catch (_) {}
-  if (!srcHost.endsWith(ALLOWED_HOST)) {
+  const _hdr = event.headers || {};
+  const _src = _hdr.origin || _hdr.Origin || _hdr.referer || _hdr.Referer || '';
+  let _srcHost = '';
+  try { _srcHost = new URL(_src).hostname; } catch (_) {}
+  if (!_srcHost.endsWith(ALLOWED_HOST)) {
     return { statusCode: 403, body: 'Forbidden' };
   }
 
